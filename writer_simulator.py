@@ -2,6 +2,8 @@ import argparse
 import time
 import os
 
+DATA_LINE_BEGINNING_TOKEN = 'Time point:'
+
 parser = argparse.ArgumentParser(description=('Copies a file line by line at '
                                 'a given speed, simulating the classifier'
                                 ' output.'))
@@ -17,6 +19,6 @@ with open(args.input, 'r') as f:
 for line in lines:
     with open(args.output, 'a+') as f:
         f.write(line)
-    time.sleep(args.sleep if line.startswith('Time point') else 0)
+    time.sleep(args.sleep if line.startswith(DATA_LINE_BEGINNING_TOKEN) else 0)
 
 os.remove(args.output)
