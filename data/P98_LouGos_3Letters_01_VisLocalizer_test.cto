@@ -1,0 +1,44 @@
+Loaded "SingleTrialGLMSettings.txt" file:
+Adding linear predictor:                   1
+Using trial duration for data window:      0
+Data window pre-onset:                     2
+Data window post-onset:                    57
+Estimating trial responses as t values
+Trial time courses will be z normalized
+Voxels will be excluded (estimated value set to 0) if intensities lower than: 100
+ 
+Loaded "VoxelsUsedForTraining.txt" file containing 386 voxels
+ 
+Output printed if full trial data available
+ 
+Starting incremental prediction...
+Loaded "SingleTrialGLMSettings.txt" file:
+Adding linear predictor:                   1
+Using trial duration for data window:      0
+Data window pre-onset:                     2
+Data window post-onset:                    57
+Estimating trial responses as t values
+Trial time courses will be z normalized
+Voxels will be excluded (estimated value set to 0) if intensities lower than: 100
+ 
+Loaded "VoxelsUsedForTraining.txt" file containing 386 voxels
+ 
+Time point:  134  last trial onset:   78 duration:  30  condition id:  2  predicted value:  2  predicted class:    1.2904
+Time point:  314  last trial onset:  258 duration:  30  condition id:  3  predicted value:  3  predicted class: -0.999409
+Time point:  404  last trial onset:  348 duration:  30  condition id:  2  predicted value:  2  predicted class:   1.02438
+Time point:  584  last trial onset:  528 duration:  30  condition id:  3  predicted value:  3  predicted class:  -0.99621
+Time point:  674  last trial onset:  618 duration:  30  condition id:  2  predicted value:  2  predicted class:   1.00372
+Time point:  854  last trial onset:  798 duration:  30  condition id:  3  predicted value:  3  predicted class:  -2.16325
+Time point:  944  last trial onset:  888 duration:  30  condition id:  2  predicted value:  2  predicted class:   1.44356
+Time point: 1124  last trial onset: 1068 duration:  30  condition id:  3  predicted value:  3  predicted class:  -1.68962
+Time point: 1214  last trial onset: 1158 duration:  30  condition id:  2  predicted value:  2  predicted class:  0.998162
+Time point: 1394  last trial onset: 1338 duration:  30  condition id:  3  predicted value:  3  predicted class:   -1.0225
+Time point: 1484  last trial onset: 1428 duration:  30  condition id:  2  predicted value:  2  predicted class:   1.04782
+Time point: 1664  last trial onset: 1608 duration:  30  condition id:  3  predicted value:  3  predicted class:  -1.25272
+Time point: 1754  last trial onset: 1698 duration:  30  condition id:  2  predicted value:  2  predicted class:   1.39925
+Time point: 1934  last trial onset: 1878 duration:  30  condition id:  3  predicted value:  3  predicted class:  -1.60718
+Time point: 1754  last trial onset: 2198 duration:  30  condition id:  2  predicted value:  2  predicted class:   1.32992
+Time point: 1934  last trial onset: 2378 duration:  30  condition id:  3  predicted value:  3  predicted class:  -1.30768
+Incremental prediction completed.
+ 
+Saved estimated patterns to disk as "OnlineClassifiedPatterns.mvp"
