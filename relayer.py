@@ -39,13 +39,16 @@ class RelayHandler(FileSystemEventHandler):
     def on_modified(self, event):
         "Called when a file is modified"
 
-        # Checks that the modified file is the one we are interested in
-        if event.src_path.endswith(split_path(self.path)['file']):
-            # reads the newly appended value
-            datapoint = read_value(self.path)
-            print('Sending datapoint', datapoint)
-            # sends the new value over the network
-            socket.send(datapoint)
+        try:
+            # Checks that the modified file is the one we are interested in
+            if event.src_path.endswith(split_path(self.path)['file']):
+                # reads the newly appended value
+                datapoint = read_value(self.path)
+                print('Sending datapoint', datapoint)
+                # sends the new value over the network
+                socket.send_string(str(datapoint))
+        except IOError:
+            pass
 
 
 # Main Execution setup
@@ -55,7 +58,7 @@ if __name__ == "__main__":
 
     # Networking setup
     context = zmq.Context()
-    socket = context.socket(zmq.REQ)
+    socket = context.socket(zmq.PUSH)
     socket.connect("tcp://{}:{}".format(args.recv_ip, args.recv_port))
 
     # File watchdog setup
