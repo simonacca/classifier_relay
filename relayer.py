@@ -5,8 +5,6 @@ import zmq
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-DATA_LINE_BEGINNING_TOKEN = 'Time point:'
-
 # Command line argument parset
 parser = argparse.ArgumentParser(description='Relays classifier values to a machine on the network.')
 parser.add_argument('--recv-ip', type=str,
@@ -21,15 +19,6 @@ def split_path(path):
     path_dir, path_file = os.path.split(os.path.abspath(args.path))
     return {'dir': path_dir, 'file': path_file}
 
-def read_value(path):
-    "Reads last line datapoint from file"
-    with open(path, 'r') as f:
-        line = f.readlines()[-1]
-    if not line.startswith(DATA_LINE_BEGINNING_TOKEN):
-        return None
-    else:
-        return float(line.split(' ')[-1])
-
 # File change event handler
 class RelayHandler(FileSystemEventHandler):
     def __init__(self, socket, path):
@@ -43,10 +32,11 @@ class RelayHandler(FileSystemEventHandler):
             # Checks that the modified file is the one we are interested in
             if event.src_path.endswith(split_path(self.path)['file']):
                 # reads the newly appended value
-                datapoint = read_value(self.path)
+                with open(path, 'r') as f:
+                    datapoint = f.readlines()[-1]
                 print('Sending datapoint', datapoint)
                 # sends the new value over the network
-                socket.send_string(str(datapoint))
+                socket.send_string(datapoint)
         except IOError:
             pass
 
