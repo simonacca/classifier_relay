@@ -44,9 +44,10 @@ class RelayHandler(FileSystemEventHandler):
             if event.src_path.endswith(split_path(self.path)['file']):
                 # reads the newly appended value
                 datapoint = read_value(self.path)
-                print('Sending datapoint', datapoint)
-                # sends the new value over the network
-                socket.send_string(str(datapoint))
+                if datapoint:
+                    print('Sending datapoint', datapoint)
+                    # sends the new value over the network
+                    socket.send_string(str(datapoint))
         except IOError:
             pass
 
