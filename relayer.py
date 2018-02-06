@@ -28,7 +28,7 @@ def read_value(path):
     if not line.startswith(DATA_LINE_BEGINNING_TOKEN):
         return None
     else:
-        return float(line.split(' ')[-1])
+        return int(line.split(' ')[-1])
 
 # File change event handler
 class RelayHandler(FileSystemEventHandler):
