@@ -2,19 +2,19 @@ import os
 import time
 import argparse
 import zmq
+import re
+import datetime
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 
-DATA_LINE_BEGINNING_TOKEN = 'Time point:'
+PREDICTION_REGEX = re.compile(r'^Time point:.*predicted value:\s*(\S*)\s*predicted class')
+
 
 # Command line argument parset
 parser = argparse.ArgumentParser(description='Relays classifier values to a machine on the network.')
-parser.add_argument('--recv-ip', type=str,
-                    help='IP address of the receiving computer')
-parser.add_argument('--recv-port', type=int, default=5555,
-                    help='Port of the receiving computer')
-parser.add_argument('--path', type=str,
-                    help='Path of the file to be watched')
+parser.add_argument('--recv-ip', type=str, help='IP address of the receiving computer')
+parser.add_argument('--recv-port', type=int, default=5555, help='Port of the receiving computer')
+parser.add_argument('--path', type=str, help='Path of the file to be watched')
 
 def split_path(path):
     "Splits file path into directory and file"
@@ -25,10 +25,8 @@ def read_value(path):
     "Reads last line datapoint from file"
     with open(path, 'r') as f:
         line = f.readlines()[-1]
-    if not line.startswith(DATA_LINE_BEGINNING_TOKEN):
-        return None
-    else:
-        return int(line.split(' ')[-1])
+    matches = PREDICTION_REGEX.search(line)
+    return matches.group(1) if matches else None
 
 # File change event handler
 class RelayHandler(FileSystemEventHandler):
@@ -45,7 +43,7 @@ class RelayHandler(FileSystemEventHandler):
                 # reads the newly appended value
                 datapoint = read_value(self.path)
                 if datapoint:
-                    print('Sending datapoint', datapoint)
+                    print('{}, {}'.format(str(datetime.datetime.now()), datapoint))
                     # sends the new value over the network
                     socket.send_string(str(datapoint))
         except IOError:
