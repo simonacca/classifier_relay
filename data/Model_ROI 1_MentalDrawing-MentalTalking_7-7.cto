@@ -1,0 +1,18 @@
+Starting incremental prediction...
+Time point:  134  last trial onset:   78 duration:  30  condition id:  3  predicted value: -0.800303  predicted class:  2
+Time point:  224  last trial onset:  168 duration:  30  condition id:  3  predicted value:  -1.52132  predicted class:  2
+Time point:  314  last trial onset:  258 duration:  30  condition id:  2  predicted value:  0.642902  predicted class:  1
+Time point:  404  last trial onset:  348 duration:  30  condition id:  3  predicted value: -0.922315  predicted class:  2
+Time point:  494  last trial onset:  438 duration:  30  condition id:  2  predicted value:  0.269059  predicted class:  1
+Time point:  584  last trial onset:  528 duration:  30  condition id:  2  predicted value: -0.0578624  predicted class:  2
+Time point:  674  last trial onset:  618 duration:  30  condition id:  2  predicted value: -0.717599  predicted class:  2
+Time point:  764  last trial onset:  708 duration:  30  condition id:  2  predicted value:  0.864047  predicted class:  1
+Time point:  854  last trial onset:  798 duration:  30  condition id:  3  predicted value:  -2.20839  predicted class:  2
+Time point:  944  last trial onset:  888 duration:  30  condition id:  2  predicted value:  0.347943  predicted class:  1
+Time point: 1034  last trial onset:  978 duration:  30  condition id:  3  predicted value:  -1.26575  predicted class:  2
+Time point: 1124  last trial onset: 1068 duration:  30  condition id:  2  predicted value:  0.220332  predicted class:  1
+Time point: 1214  last trial onset: 1158 duration:  30  condition id:  3  predicted value:  -1.99637  predicted class:  2
+Time point: 1304  last trial onset: 1248 duration:  30  condition id:  2  predicted value:   1.04161  predicted class:  1
+Time point: 1394  last trial onset: 1338 duration:  30  condition id:  3  predicted value: -0.423621  predicted class:  2
+Time point: 1484  last trial onset: 1428 duration:  30  condition id:  3  predicted value:  -1.05801  predicted class:  2
+Time point: 1574  last trial onset: 1518 duration:  30  condition id:  3  predicted value: -0.675766  predicted class:  2
